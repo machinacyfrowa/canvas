@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="c" width="800" height="600" style="border:1px solid black"></canvas><br>
+    Podaj długość boku kwadratu:
+    <input type="number" id="a">
+    <button id="drawButton" onclick="draw()">Rysuj</button>
+    <button id="clearButton" onclick="c()">Wyczyść</button>
+    <script>
+        const canvas = document.getElementById('c');
+        const ctx = canvas.getContext('2d');
+
+        ctx.strokeStyle = "black"; //kolor obrysu (linii)
+        ctx.fillStyle = "black"; //kolor wypełnienia
+
+        //ctx.moveTo(50, 50);
+        //ctx.lineTo(100,100);
+        //ctx.stroke();
+
+        //ctx.strokeRect(200, 200, 100, 100);
+        //ctx.fillRect(400, 200, 100, 100);
+        //ctx.strokeText("Kwadrat", 200, 180);
+        //ctx.fillText("Kwadrat", 400, 180);
+
+        function draw() {
+            let a = document.getElementById('a').value;
+            a = parseInt(a);
+            let canvasWidth = document.getElementById('c').clientWidth;
+            let canvasHeight = document.getElementById('c').clientHeight;
+            let drawStartx = (canvasWidth - a) / 2;
+            let drawStarty = (canvasHeight - a) / 2;
+            ctx.strokeRect(drawStartx, drawStarty, a, a);
+        }
+        function c() {
+            ctx.clearRect(0, 0, 800, 600);
+            ctx.beginPath();
+        }
+    </script>
+</body>
+
+</html>
